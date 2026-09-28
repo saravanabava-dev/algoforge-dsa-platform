@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  ::selection {
+    background-color: theme("colors.ember.500");
+    color: theme("colors.forge.50");
+  }
+  :focus-visible {
+    outline: 2px solid theme("colors.circuit.400");
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-ember-500 px-5 py-2.5
+      font-display font-semibold text-forge-50 transition-colors hover:bg-ember-400
+      focus-visible:outline-circuit-400 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-forge-400
+      bg-forge-200/60 px-5 py-2.5 font-display font-semibold text-forge-900 transition-colors
+      hover:border-circuit-500 hover:text-circuit-600 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .card {
+    @apply rounded-xl border border-forge-300 bg-white shadow-card backdrop-blur-sm transition-shadow;
+  }
+  .label-eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-circuit-600;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
